@@ -12,9 +12,10 @@ frontend/dist/
 dataset/*.class
 dataset/queries.csv
 
-# IDE / OS
+# IDE / OS / local tooling
 .idea/
 .vscode/
+.claude/
 *.iml
 .DS_Store
 Thumbs.db

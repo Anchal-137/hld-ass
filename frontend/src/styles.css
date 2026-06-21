@@ -1,0 +1,258 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-2: #334155;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-2: #f59e0b;
+  --border: #334155;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  margin-top: 28px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Search bar ---- */
+.searchbar {
+  position: relative;
+}
+
+.searchbar-row {
+  display: flex;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 16px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+}
+
+.search-btn {
+  padding: 0 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #04263a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  filter: brightness(1.08);
+}
+
+/* ---- Dropdown ---- */
+.dropdown {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 84px;
+  margin-top: 6px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 16px;
+  cursor: pointer;
+}
+
+.dropdown-item.active,
+.dropdown-item:hover {
+  background: var(--panel-2);
+}
+
+.item-query {
+  color: var(--text);
+}
+
+.item-count {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+
+.dropdown-status {
+  padding: 14px 16px;
+  color: var(--muted);
+}
+
+.dropdown-status.error {
+  color: #fca5a5;
+}
+
+.dropdown-footer {
+  padding: 6px 16px;
+  font-size: 11px;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.2);
+  text-align: right;
+}
+
+.rank-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.rank-toggle button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rank-toggle button.on {
+  background: var(--accent);
+  color: #04263a;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.search-result {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+}
+
+/* ---- Trending ---- */
+.trending {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.trending-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.trending-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.mode-toggle button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mode-toggle button:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.mode-toggle button:last-child {
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+}
+
+.mode-toggle button.on {
+  background: var(--accent-2);
+  color: #3b2400;
+  border-color: var(--accent-2);
+  font-weight: 700;
+}
+
+.trending-list {
+  list-style: decimal;
+  margin: 8px 0;
+  padding-left: 26px;
+}
+
+.trending-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+}
+
+.trending-list li.muted {
+  color: var(--muted);
+  justify-content: flex-start;
+}
+
+.trending-footer {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.app-footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+code {
+  background: var(--panel-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

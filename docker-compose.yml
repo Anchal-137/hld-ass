@@ -1,0 +1,98 @@
+# =====================================================================
+#  Full stack: PostgreSQL + 3 Redis cache nodes + backend + frontend.
+#  The three Redis containers (redis-0/1/2) are the distributed-cache ring
+#  members; redis-0 additionally hosts the Streams used for batch writes.
+#  Bring it all up with:  docker compose up --build
+#  Frontend:  http://localhost:3000     Backend API:  http://localhost:8080
+# =====================================================================
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ta-postgres
+    environment:
+      POSTGRES_DB: typeahead
+      POSTGRES_USER: typeahead
+      POSTGRES_PASSWORD: typeahead
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U typeahead -d typeahead"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis-0:
+    image: redis:7-alpine
+    container_name: ta-redis-0
+    # Enable AOF so stream events survive a Redis restart (batch-write durability).
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis0:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis-1:
+    image: redis:7-alpine
+    container_name: ta-redis-1
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis1:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis-2:
+    image: redis:7-alpine
+    container_name: ta-redis-2
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis2:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: ta-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis-0:
+        condition: service_healthy
+      redis-1:
+        condition: service_healthy
+      redis-2:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: ta-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  redis0:
+  redis1:
+  redis2:

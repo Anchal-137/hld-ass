@@ -1,0 +1,81 @@
+query,count
+iphone,100000
+iphone 15,85000
+iphone 15 pro,72000
+iphone 15 pro max,68000
+iphone charger,60000
+iphone case,54000
+iphone 14,49000
+iphone 13,38000
+ipad,46000
+ipad air,31000
+ipad pro,29000
+ipod,12000
+imac,15000
+java,90000
+java tutorial,40000
+java tutorial for beginners,22000
+java interview questions,35000
+java spring boot,33000
+java collections,21000
+java streams,19000
+javascript,88000
+javascript tutorial,42000
+javascript array methods,17000
+python,95000
+python tutorial,44000
+python pandas,28000
+python for data science,26000
+samsung,80000
+samsung galaxy,52000
+samsung galaxy s24,47000
+samsung tv,33000
+laptop,76000
+laptop deals,29000
+laptop bag,24000
+macbook,71000
+macbook air,48000
+macbook pro,45000
+headphones,58000
+bluetooth headphones,34000
+wireless earbuds,37000
+airpods,55000
+airpods pro,41000
+smart watch,39000
+apple watch,46000
+nike shoes,43000
+adidas shoes,38000
+running shoes,36000
+coffee maker,27000
+air fryer,42000
+vacuum cleaner,25000
+gaming chair,31000
+mechanical keyboard,28000
+monitor,33000
+4k monitor,21000
+graphics card,35000
+ssd,29000
+external hard drive,18000
+power bank,23000
+usb c cable,26000
+phone stand,14000
+spring boot tutorial,30000
+spring boot redis,16000
+spring data jpa,15000
+react tutorial,32000
+react hooks,24000
+redis caching,18000
+system design interview,34000
+consistent hashing,12000
+database indexing,15000
+kafka tutorial,19000
+docker tutorial,27000
+kubernetes tutorial,22000
+amazon prime,40000
+netflix,62000
+youtube,89000
+google,99000
+gmail login,57000
+weather today,45000
+news today,38000
+cricket score,52000

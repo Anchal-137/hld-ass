@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -version)",
+      "Bash(mvn -version)",
+      "Bash(npm -v)",
+      "Bash(docker --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

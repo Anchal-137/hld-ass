@@ -1,0 +1,20 @@
+# Java / Maven
+backend/target/
+*.class
+*.jar
+!**/maven-wrapper.jar
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+
+# Dataset build artifacts (regenerate with DatasetGenerator)
+dataset/*.class
+dataset/queries.csv
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
